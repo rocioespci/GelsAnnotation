@@ -60,15 +60,12 @@ if(length(lanes.labels)!=n.lanes){stop('length(length.labels) must be n.lanes')}
 img.input <- load.image(file)
 
 ## Cut manually
-par(mfrow=c(2,2))
 coord <- grabRect(img.input, output = "coord")
 img <- img.input
 img <- imsub(img, x < coord["x1"])
 img <- imsub(img, y < coord["y1"])
 img <- imsub(img, x>coord["x0"])
 img <- imsub(img, y>coord["y0"])
-
-plot(img)
 
 ## Detect lanes
 img.1d <- apply(img, 1,sum)
@@ -104,29 +101,3 @@ par(ps=name.pt)
 text(x=x.name, y=y.name, labels = file, col=name.col, srt=90, adj=adj.name)
 
 dev.off()
-
-
-
-
-# ## Inputs
-# file    <- "Gel_2020_07_13.Tif"
-# out <- sub(".Tif", "_annotated.png", file)
-# n.lanes <- 6
-# lanes.labels <- c("Ladder 1kb", "ex1","ex2","ex3","3x4","ex5")
-# 
-# height.mm <- 100
-# text.pt   <- 8
-# text.color <- "red"
-# 
-# labels.angle    <- 90
-# labels.position <- "top"  # or "bottom"
-# labels.offset.y <- 10
-# labels.col      <- text.color
-# labels.pt       <- text.pt
-# 
-# name.position <- "bottomright"
-# name.offset   <- 10
-# name.col      <- text.color
-# name.pt       <- text.pt
-
-
