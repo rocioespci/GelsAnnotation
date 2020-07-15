@@ -12,6 +12,8 @@ image magick
 ## Instalation
 Once the dependencies are installed, you can directly use the code.
 
+Copy it in your PATH, or in the folder you want to run it.
+
 ## Use
 Rscript AnnotateGel.R --file NAME -o NAME --n.lanes NUM --lanes.labels "LABEL1,LABEL2,LABEL3..." 
 
