@@ -20,7 +20,7 @@ option_list = list(
   make_option(c("--labels.pt"),     type="numeric",     default=NULL,help="labes size (default text.pt)", metavar="numeric"),
   make_option(c("--name.position"), type="character",     default="bottomright",help="bottomleft/bottomright/topright/topleft", metavar="numeric"),
   make_option(c("--name.offset"),   type="numeric",     default=10,help="offset for name position", metavar="numeric"),
-  make_option(c("--name.col"),      type="numeric",     default=NULL,help="color for name (default text.color)", metavar="numeric"),
+  make_option(c("--name.col"),      type="character",     default=NULL,help="color for name (default text.color)", metavar="numeric"),
   make_option(c("--name.pt"),       type="numeric",     default=NULL,help="name for labels (default text.color)", metavar="numeric")
 );
 
@@ -69,7 +69,6 @@ img <- imsub(img, y>coord["y0"])
 
 ## Detect lanes
 img.1d <- apply(img, 1,sum)
-# if(length(img.1d)>img.width){ img.1d <- img.1d [1:img.width] }
 peaks  <- findpeaks(img.1d, npeaks = n.lanes, minpeakdistance = 50)
 peaks  <- peaks[order(peaks[,2]),]
 
@@ -84,20 +83,22 @@ img <- max(img)-img
 
 ##### Plot
 png(out, width = nrow(img)/ncol(img)*height.mm, height = height.mm, units = "mm", res = 500)
-par(mar=c(0,0,0,0), ps=labels.pt)
-plot(img, axes = F)
-
-# Print labels
-if(labels.position=="top"){y=labels.offset.y;adj.y=1}
-if(labels.position=="bottom"){y=ncol(img)-labels.offset.y;adj.y=0}
-text(x=max.pos,y=y, labels = lanes.labels, col="red", srt=labels.angle,adj = c(adj.y,0.5), )
-
-# Print name of the file
-if(name.position=="bottomright"){x.name=dim(img)[1]-name.offset; y.name=dim(img)[2]-name.offset;   adj.name = c(0,0) }
-if(name.position=="topright"){   x.name=dim(img)[1]-name.offset; y.name=0+name.offset;             adj.name = c(1,0)  }
-if(name.position=="topleft"){    x.name=name.offset;             y.name=0+name.offset;             adj.name = c(1,1) }
-if(name.position=="bottomleft"){ x.name=name.offset;             y.name=dim(img)[2]-name.offset;   adj.name = c(0,1) }
-par(ps=name.pt)
-text(x=x.name, y=y.name, labels = file, col=name.col, srt=90, adj=adj.name)
-
+  par(mar=c(0,0,0,0), ps=labels.pt)
+  plot(img, axes = F)
+  
+  # Print labels
+  if(labels.position=="top"){y=labels.offset.y;adj.y=1}
+  if(labels.position=="bottom"){y=ncol(img)-labels.offset.y;adj.y=0}
+  text(x=max.pos,y=y, labels = lanes.labels, col=labels.col, srt=labels.angle,adj = c(adj.y,0.5), )
+  
+  # Print name of the file
+  if(name.position=="bottomright"){x.name=dim(img)[1]-name.offset; y.name=dim(img)[2]-name.offset;   adj.name = c(0,0) }
+  if(name.position=="topright"){   x.name=dim(img)[1]-name.offset; y.name=0+name.offset;             adj.name = c(1,0)  }
+  if(name.position=="topleft"){    x.name=name.offset;             y.name=0+name.offset;             adj.name = c(1,1) }
+  if(name.position=="bottomleft"){ x.name=name.offset;             y.name=dim(img)[2]-name.offset;   adj.name = c(0,1) }
+  par(ps=name.pt)
+  text(x=x.name, y=y.name, labels = file, col=name.col, srt=90, adj=adj.name)
 dev.off()
+
+
+
