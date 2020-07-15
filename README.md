@@ -5,9 +5,9 @@ Scripts for fast agarose gels annotations
 
 R
 
-R packages: imager, pracma, optparse
+R packages: imager, pracma, optparse (availables in CRAN)
 
-image magick
+image magick  (https://imagemagick.org/script/download.php#windows)
 
 ## Instalation
 Once the dependencies are installed, you can directly use the code.
