@@ -8,8 +8,8 @@ require(optparse)
 option_list = list(
   make_option(c("-f", "--file"),     type="character",   default=NULL,help="dataset file name", metavar="character"),
   make_option(c("-o", "--out"),      type="character",   default=NULL,help="output file name [default= %default]", metavar="character"),
-  make_option(c("--n.lanes"),       type="numeric",     default=NULL,help="number of lanes in the gel", metavar="numeric"),
-  make_option(c("--lanes.labels"),  type="character",   default=NULL,help="labels for the lanes, separated by commas", metavar="character"),
+  make_option(c("-n", "--n.lanes"),       type="numeric",     default=NULL,help="number of lanes in the gel", metavar="numeric"),
+  make_option(c("-l","--lanes.labels"),  type="character",   default=NULL,help="labels for the lanes, separated by commas, quoted", metavar="character"),
   make_option(c("--height.mm"),     type="numeric",     default=100,  help="height of output in mm", metavar="numeric"),
   make_option(c("--text.pt"),       type="numeric",     default=8,   help="text size in pt", metavar="numeric"),
   make_option(c("--text.color"),    type="character",   default="red", help="text color", metavar="character"),
