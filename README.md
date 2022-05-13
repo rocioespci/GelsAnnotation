@@ -17,13 +17,27 @@ Copy it in your PATH, or in the folder you want to run it.
 ## Use
 
 **Option I**
+ In ubuntu: 
+annotate_gel -f NAME -o NAME -n NUM -l "LABEL1,LABEL2,LABEL3..." 
+
+In Windows
+Rscript annotate_gel -f NAME -o NAME -n NUM -l "LABEL1,LABEL2,LABEL3..." 
+
+An image will open for you to select the area to keep (remove margins).
+The cut image will open for you to draw a line, indicating where the lanes' names will be. 
+Be careful on the horizontal coordinates: the beggining of the line should match the middle of the first lane, and the end of the line the middle of the last lane. Don't worry too much on the vertical coordinates, it will only keep the lowest value. 
+
+If there is an empty lane, just write nothing on it.
+
+
+**Option II**
 
 
 Rscript AG_findpeaks.R --file NAME -o NAME --n.lanes NUM --lanes.labels "LABEL1,LABEL2,LABEL3..." 
 
 An image will open for you to select the area to keep (remove margins).
 
-**Option II**
+**Option III**
 
 Rscript AG_lanesline.R --file NAME -o NAME --n.lanes NUM --lanes.labels "LABEL1,LABEL2,LABEL3..." 
 
@@ -32,6 +46,7 @@ The cut image will open for you to draw a line, indicating where the lanes' name
 Be careful on the horizontal coordinates: the beggining of the line should match the middle of the first lane, and the end of the line the middle of the last lane. Don't worry too much on the vertical coordinates, it will only keep the lowest value. 
 
 If there is an empty lane, just write nothing on it.
+
 
 
 
