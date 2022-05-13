@@ -17,10 +17,11 @@ Copy it in your PATH, or in the folder you want to run it.
 ## Use
 
 **Option I**
+
  In ubuntu: 
 annotate_gel -f NAME -o NAME -n NUM -l "LABEL1,LABEL2,LABEL3..." 
 
-In Windows
+In Windows:
 Rscript annotate_gel -f NAME -o NAME -n NUM -l "LABEL1,LABEL2,LABEL3..." 
 
 An image will open for you to select the area to keep (remove margins).
