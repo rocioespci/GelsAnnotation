@@ -9,7 +9,7 @@ R packages: imager, pracma, optparse (availables in CRAN)
 
 image magick  (https://imagemagick.org/script/download.php#windows)
 
-## Instalation
+## Installation
 Once the dependencies are installed, you can directly use the code.
 
 Copy it in your PATH, or in the folder you want to run it.
